@@ -6,6 +6,8 @@ HEIGHT = 5
 HORIZONTAL_COLOR_SET = ('rgb(0,133,229)', 'rgb(40,121,180)', 'rgb(70,113,144)')
 SHAPE_SET = ('linear', 'vhv')  #spline
 
+CHEIGHT = {'up': lambda y0, n: y0 - HEIGHT + (0.1 * HEIGHT),
+           'lo': lambda y0, n: y0 - HEIGHT - (0.1 * HEIGHT)}
 
 def hcol():
     return cycle(HORIZONTAL_COLOR_SET)
@@ -25,5 +27,5 @@ def textpos(n: int, row_width, txt_lvl, shape):
         return 'center', txt_lvl
 
 def calc_height(y0, n):
-    return y0 - HEIGHT - (0.1 * HEIGHT) if (n % 2) else y0 - HEIGHT + (0.1 * HEIGHT)
+    return CHEIGHT['up'](y0,n) if (n % 2) else CHEIGHT['lo'](y0,n)
 
