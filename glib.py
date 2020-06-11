@@ -33,7 +33,6 @@ def makegfx(title: str, data: dict, descr: dict, hlink: dict) -> None:
 
         for n, link in enumerate(data[level]):
             x1 = x1 + WIDE
-
             y1 = calc_height(y0, n) if level_shape == 'linear' else y0 - HEIGHT
             tpxy = pxy[level + 1].get(link[1])
             if tpxy is not None:
